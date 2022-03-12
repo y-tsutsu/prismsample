@@ -32,7 +32,7 @@ namespace PrismSample.Lib.ViewModels
 
         private void CalculateAnswer(double operand)
         {
-            Answer.Value = Model != null ? Model.Calculate(operand).ToString() : string.Empty;
+            Answer.Value = Model!.Calculate(operand).ToString();
         }
     }
 }
