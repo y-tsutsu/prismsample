@@ -7,8 +7,14 @@
         xmlns:local="clr-namespace:PrismSample.Lib.Views"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="MainWindow" Width="800" Height="450" FontSize="40">
+        Title="MainWindow" Width="800" Height="450" FontSize="40"
+        Loaded="OnLoaded">
     <Grid>
-        <TextBlock Text="{Binding Text.Value}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ContentControl Grid.Column="0" Margin="20" prism:RegionManager.RegionName="OperandRegion"/>
+        <ContentControl Grid.Column="1" Margin="20" prism:RegionManager.RegionName="AnswerRegion"/>
     </Grid>
 </Window>

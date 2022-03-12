@@ -26,6 +26,8 @@ namespace PrismSample.App.Main
             base.ConfigureViewModelLocator();
 
             ViewModelLocationProvider.Register<MainWindow, MainWindowViewModel>();
+            ViewModelLocationProvider.Register<OperandView, OperandViewModel>();
+            ViewModelLocationProvider.Register<AnswerView, AnswerViewModel>();
         }
     }
 }
