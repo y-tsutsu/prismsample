@@ -20,6 +20,7 @@ namespace PrismSample.App.Main
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IDialogHelper, DialogHelper>();
             containerRegistry.Register<IModel, Model>();
         }
 

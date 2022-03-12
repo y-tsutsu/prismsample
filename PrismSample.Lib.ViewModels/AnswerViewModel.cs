@@ -6,6 +6,7 @@ using Unity;
 namespace PrismSample.Lib.ViewModels
 {
     using Models;
+    using Views;
 
     public class AnswerViewModel : BindableBase
     {
@@ -16,11 +17,17 @@ namespace PrismSample.Lib.ViewModels
         [Dependency]
         public IModel? Model { get; set; }
 
+        [Dependency]
+        public IDialogHelper? DialogHelper { get; set; }
+
         public AnswerViewModel(IEventAggregator eventAggregator)
         {
             Answer = new ReactiveProperty<string>("4");
 
             eventAggregator.GetEvent<PubSubEvent<double>>().Subscribe(CalculateAnswer);
+
+            ShowDialogCommand = new ReactiveCommand()
+                .WithSubscribe(_ => DialogHelper!.ShowDialog($"N^2 = {Answer.Value}"));
         }
 
         private void CalculateAnswer(double operand)
