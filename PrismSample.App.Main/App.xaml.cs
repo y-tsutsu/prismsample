@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Unity;
+using PrismSample.Lib.Models;
 using PrismSample.Lib.Views;
 using PrismSample.Lib.ViewModels;
 
@@ -19,6 +20,7 @@ namespace PrismSample.App.Main
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IModel, Model>();
         }
 
         protected override void ConfigureViewModelLocator()

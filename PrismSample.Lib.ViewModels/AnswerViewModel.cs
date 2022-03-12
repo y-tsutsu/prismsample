@@ -5,11 +5,16 @@ using Unity;
 
 namespace PrismSample.Lib.ViewModels
 {
+    using Models;
+
     public class AnswerViewModel : BindableBase
     {
         public ReactiveProperty<string> Answer { get; }
 
         public ReactiveCommand<object>? ShowDialogCommand { get; }
+
+        [Dependency]
+        public IModel? Model { get; set; }
 
         public AnswerViewModel(IEventAggregator eventAggregator)
         {
@@ -20,7 +25,7 @@ namespace PrismSample.Lib.ViewModels
 
         private void CalculateAnswer(double operand)
         {
-            Answer.Value = (operand * operand).ToString();
+            Answer.Value = Model != null ? Model.Calculate(operand).ToString() : string.Empty;
         }
     }
 }
